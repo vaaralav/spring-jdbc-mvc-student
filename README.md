@@ -6,4 +6,4 @@
 - Maven
 
 ## Getting started
-Run with `mvn spring-boot:run`. The app shuold be running at [http://localhost:8080/](http://localhost:8080).
+Run with `mvn spring-boot:run`. The app should be running at [http://localhost:8080/](http://localhost:8080).
