@@ -42,17 +42,14 @@ public class StudentAPIController {
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-  public @ResponseBody Student updateStudent(
-          @PathVariable("id") int id,
-          @RequestBody Student update) {
-    Student student = studentService.getById(id);
+  public @ResponseBody Student upsertStudent(@PathVariable("id") int id, @RequestBody Student student) {
 
-    student.setName(update.getName());
-    student.setGPAX(update.getGPAX());
-    student.setAmbition(update.getAmbition());
+    // TODO: Should return error instead
+    if (id != student.getId()) {
+      return null;
+    }
 
-    studentService.update(student);
-    return student;
+    return studentService.upsert(id, student);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
@@ -69,6 +66,14 @@ public class StudentAPIController {
 
     if (update.getAmbition() != null) {
       student.setAmbition(update.getAmbition());
+    }
+
+    // TODO: Should return error instead
+    // Handle this last so every other attribute is already updated locally
+    if (update.getId() != null) {
+      return studentService.upsert(id, new Student(
+        update.getId(), student.getName(), student.getGPAX(), student.getAmbition()
+      ));
     }
 
     studentService.update(student);

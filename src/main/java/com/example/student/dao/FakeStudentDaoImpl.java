@@ -45,9 +45,18 @@ public class FakeStudentDaoImpl implements StudentDao {
 
   @Override
   public void insert(Student student) {
-
     System.out.println(student.getId());
     this.students.put(student.getId(), student);
+  }
+
+  @Override
+  public void upsert(Integer id, Student update) {
+    Student student = students.get(id);
+    if (student != null) {
+      this.update(student);
+    } else {
+      students.put(update.getId(), update);
+    }
   }
 
   @Override

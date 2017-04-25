@@ -23,6 +23,16 @@ public class StudentService {
     return this.studentDao.create(name, gpax, ambition);
   }
 
+  public Student insert(Student student) {
+    this.studentDao.insert(student);
+    return student;
+  }
+
+  public Student upsert(Integer id, Student student) {
+    this.studentDao.upsert(id, student);
+    return student;
+  }
+
   public Student getById(int id) {
     return this.studentDao.getById(id);
   }
@@ -31,7 +41,8 @@ public class StudentService {
     this.studentDao.removeById(id);
   }
 
-  public void update(Student student) {
+  public Student update(Student student) {
     this.studentDao.update(student);
+    return student;
   }
 }
