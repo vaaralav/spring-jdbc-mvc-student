@@ -18,13 +18,4 @@ public class StudentController {
     return "students";
   }
 
-  @RequestMapping(value = "/api/student", method = RequestMethod.POST)
-  public @ResponseBody Student createStudent(
-    @RequestParam(value="name", required=true) String name,
-    @RequestParam(value="gpax", required=false) Double gpax,
-    @RequestParam(value="ambition", required=false) String ambition) {
-
-    return new Student(name, gpax, ambition);
-  }
-
 }
