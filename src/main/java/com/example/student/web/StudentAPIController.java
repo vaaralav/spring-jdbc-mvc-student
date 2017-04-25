@@ -34,4 +34,33 @@ public class StudentAPIController {
     return studentService.getById(id);
   }
 
+  @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+  public @ResponseBody void removeStudentById(@PathVariable("id") int id) {
+    studentService.removeById(id);
+  }
+
+  @RequestMapping(value = "/{id}", method = {RequestMethod.PUT, RequestMethod.PATCH})
+  public @ResponseBody Student updateStudent(
+          @PathVariable("id") int id,
+          @RequestParam(value="name", required = false) String name,
+          @RequestParam(value="gpax", required = false) Double gpax,
+          @RequestParam(value="ambition", required = false) String ambition) {
+    Student student = studentService.getById(id);
+
+    if (name != null) {
+      student.setName(name);
+    }
+
+    if (gpax != null) {
+      student.setGPAX(gpax);
+    }
+
+    if (ambition != null) {
+      student.setAmbition(ambition);
+    }
+
+    studentService.update(student);
+    return student;
+  }
+
 }
