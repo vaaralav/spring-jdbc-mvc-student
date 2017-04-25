@@ -4,6 +4,7 @@ import com.example.student.domain.Student;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,11 @@ public class FakeStudentDaoImpl implements StudentDao {
   static {
     students = new HashMap<Integer, Student>(){};
     counter = 0;
+  }
+
+  @Override
+  public void setDataSource(DataSource ds) {
+
   }
 
   @Override

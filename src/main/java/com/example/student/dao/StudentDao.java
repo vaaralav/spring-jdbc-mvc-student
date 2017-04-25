@@ -3,8 +3,11 @@ package com.example.student.dao;
 import com.example.student.domain.Student;
 
 import java.util.Collection;
+import javax.sql.DataSource;
 
 public interface StudentDao {
+
+  void setDataSource(DataSource ds);
 
   Collection<Student> getAll();
 
