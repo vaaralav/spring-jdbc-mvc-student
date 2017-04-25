@@ -29,4 +29,9 @@ public class StudentAPIController {
     return studentService.create(name, gpax, ambition);
   }
 
+  @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+  public @ResponseBody Student getStudentById(@PathVariable("id") int id) {
+    return studentService.getById(id);
+  }
+
 }

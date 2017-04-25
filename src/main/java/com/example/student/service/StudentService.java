@@ -22,4 +22,8 @@ public class StudentService {
   public Student create(String name, Double gpax, String ambition) {
     return this.studentDao.create(name, gpax, ambition);
   }
+
+  public Student getById(int id) {
+    return this.studentDao.getById(id);
+  }
 }
