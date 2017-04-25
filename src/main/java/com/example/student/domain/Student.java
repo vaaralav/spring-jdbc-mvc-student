@@ -3,13 +3,13 @@ package com.example.student.domain;
 public class Student {
   private Integer id;
   private String name;
-  private Double gapx;
+  private Double gpax;
   private String ambition;
 
-  public Student(Integer id, String name, Double gapx, String ambition) {
+  public Student(Integer id, String name, Double gpax, String ambition) {
     this.id = id;
     this.name = name;
-    this.gapx = gapx;
+    this.gpax = gpax;
     this.ambition = ambition;
   }
 
@@ -25,12 +25,12 @@ public class Student {
     return this.name;
   }
 
-  public void setGAPX(Double gapx) {
-    this.gapx = gapx;
+  public void setGPAX(Double gpax) {
+    this.gpax = gpax;
   }
 
-  public Double getGAPX() {
-    return this.gapx;
+  public Double getGPAX() {
+    return this.gpax;
   }
 
   public void setAmbition(String ambition) {

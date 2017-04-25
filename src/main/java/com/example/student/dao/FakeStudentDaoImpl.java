@@ -38,7 +38,7 @@ public class FakeStudentDaoImpl implements StudentDao {
   public void update(Student student) {
     Student s = students.get(student.getId());
     s.setName(student.getName());
-    s.setGAPX(student.getGAPX());
+    s.setGPAX(student.getGPAX());
     s.setAmbition(student.getAmbition());
     students.put(s.getId(), s);
   }
@@ -51,11 +51,11 @@ public class FakeStudentDaoImpl implements StudentDao {
   }
 
   @Override
-  public Student create(String name, Double gapx, String ambition) {
+  public Student create(String name, Double gpax, String ambition) {
     Student student = new Student(
       ++this.counter,
       name,
-      gapx,
+      gpax,
       ambition
     );
 

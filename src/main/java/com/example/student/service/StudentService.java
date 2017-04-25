@@ -19,7 +19,7 @@ public class StudentService {
     return this.studentDao.getAll();
   }
 
-  public Student create(String name, Double gapx, String ambition) {
-    return this.studentDao.create(name, gapx, ambition);
+  public Student create(String name, Double gpax, String ambition) {
+    return this.studentDao.create(name, gpax, ambition);
   }
 }

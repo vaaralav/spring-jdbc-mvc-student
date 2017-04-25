@@ -16,6 +16,6 @@ public interface StudentDao {
 
   void insert(Student student);
 
-  Student create(String name, Double gapx, String ambition);
+  Student create(String name, Double gpax, String ambition);
 
 }
