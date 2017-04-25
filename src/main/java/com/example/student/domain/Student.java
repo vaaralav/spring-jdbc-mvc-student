@@ -13,6 +13,8 @@ public class Student {
     this.ambition = ambition;
   }
 
+  public Student() {}
+
   public Integer getId() {
     return this.id;
   }

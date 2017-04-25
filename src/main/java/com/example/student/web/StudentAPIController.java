@@ -23,10 +23,12 @@ public class StudentAPIController {
 
   @RequestMapping(method = RequestMethod.POST)
   public @ResponseBody Student createStudent(
-    @RequestParam(value="name", required=false) String name,
-    @RequestParam(value="gpax", required=false) Double gpax,
-    @RequestParam(value="ambition", required=false) String ambition) {
-    return studentService.create(name, gpax, ambition);
+    @RequestBody Student student) {
+    return studentService.create(
+            student.getName(),
+            student.getGPAX(),
+            student.getAmbition()
+    );
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -39,24 +41,34 @@ public class StudentAPIController {
     studentService.removeById(id);
   }
 
-  @RequestMapping(value = "/{id}", method = {RequestMethod.PUT, RequestMethod.PATCH})
+  @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
   public @ResponseBody Student updateStudent(
           @PathVariable("id") int id,
-          @RequestParam(value="name", required = false) String name,
-          @RequestParam(value="gpax", required = false) Double gpax,
-          @RequestParam(value="ambition", required = false) String ambition) {
+          @RequestBody Student update) {
     Student student = studentService.getById(id);
 
-    if (name != null) {
-      student.setName(name);
+    student.setName(update.getName());
+    student.setGPAX(update.getGPAX());
+    student.setAmbition(update.getAmbition());
+
+    studentService.update(student);
+    return student;
+  }
+
+  @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+  public @ResponseBody Student patchStudent(@PathVariable("id") int id, @RequestBody Student update) {
+    Student student = studentService.getById(id);
+
+    if (update.getName() != null) {
+      student.setName(update.getName());
     }
 
-    if (gpax != null) {
-      student.setGPAX(gpax);
+    if (update.getGPAX() != null) {
+      student.setGPAX(update.getGPAX());
     }
 
-    if (ambition != null) {
-      student.setAmbition(ambition);
+    if (update.getAmbition() != null) {
+      student.setAmbition(update.getAmbition());
     }
 
     studentService.update(student);
