@@ -1,5 +1,6 @@
 package com.example.student.web;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.student.domain.Student;
 import com.example.student.service.StudentService;
 
+import java.awt.*;
 import java.util.Collection;
 
 @RestController
@@ -21,9 +23,27 @@ public class StudentAPIController {
     return studentService.getAll();
   }
 
-  @RequestMapping(method = RequestMethod.POST)
-  public @ResponseBody Student createStudent(
+  @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+  public @ResponseBody Student jsonCreateStudent(
     @RequestBody Student student) {
+    System.out.println(student.toString());
+    return studentService.create(
+            student.getName(),
+            student.getGPAX(),
+            student.getAmbition()
+    );
+  }
+
+  @RequestMapping(method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
+  public @ResponseBody Student formCreateStudent(
+          @RequestParam("name") String name,
+          @RequestParam("gpax") Double gpax,
+          @RequestParam("ambition") String ambition) {
+    Student student = new Student();
+    student.setName(name);
+    student.setGPAX(gpax);
+    student.setAmbition(ambition);
+    System.out.println(student.toString());
     return studentService.create(
             student.getName(),
             student.getGPAX(),
@@ -41,13 +61,28 @@ public class StudentAPIController {
     studentService.removeById(id);
   }
 
-  @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+  @RequestMapping(value = "/{id}", method = {RequestMethod.PUT}, consumes = "application/json")
   public @ResponseBody Student upsertStudent(@PathVariable("id") int id, @RequestBody Student student) {
+    System.out.println(student);
 
     // TODO: Should return error instead
     if (id != student.getId()) {
       return null;
     }
+
+    return studentService.upsert(id, student);
+  }
+
+  // Accept also POST because support for non-JavaScript clients...
+  @RequestMapping(value = "/{id}", method = {RequestMethod.PUT, RequestMethod.POST}, consumes = "application/x-www-form-urlencoded")
+  public @ResponseBody Student formUpsertStudent(@PathVariable("id") int id,
+          @RequestParam("id") Integer studentId,
+          @RequestParam("name") String name,
+          @RequestParam("gpax") Double gpax,
+          @RequestParam("ambition") String ambition) {
+    Student student = new Student(studentId, name, gpax, ambition);
+
+    System.out.println(student.toString());
 
     return studentService.upsert(id, student);
   }

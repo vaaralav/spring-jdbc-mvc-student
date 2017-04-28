@@ -51,4 +51,17 @@ public class Student {
   public String getAmbition() {
     return this.ambition;
   }
+
+  public String toString() {
+    final Integer id = this.getId();
+    final Double gpax = this.getGPAX();
+
+    return String.join("\n",
+            "-------- STUDENT --------",
+            "id: " + (id != null ? id.toString() : null),
+            "name: " + this.getName(),
+            "gpax: " + (gpax != null ? gpax.toString() : null),
+            "ambition: " + this.getAmbition()
+    );
+  }
 }

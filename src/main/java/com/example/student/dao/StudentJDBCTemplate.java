@@ -118,7 +118,7 @@ public class StudentJDBCTemplate implements StudentDao {
             }
         }, keyHolder);
 
-        Student student = new Student((Integer)keyHolder.getKey().intValue(), name, gpax, ambition);
+        Student student = new Student(keyHolder.getKey().intValue(), name, gpax, ambition);
         return student;
     }
 }
