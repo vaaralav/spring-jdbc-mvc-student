@@ -6,6 +6,11 @@ public class Student {
   private Double gpax;
   private String ambition;
 
+  public static final String STUDENT_ID = "id";
+  public static final String STUDENT_NAME = "name";
+  public static final String STUDENT_GPAX = "gpax";
+  public static final String STUDENT_AMBITION = "ambition";
+
   public Student(Integer id, String name, Double gpax, String ambition) {
     this.id = id;
     this.name = name;

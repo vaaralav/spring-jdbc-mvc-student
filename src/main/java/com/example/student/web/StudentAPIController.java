@@ -71,9 +71,7 @@ public class StudentAPIController {
     // TODO: Should return error instead
     // Handle this last so every other attribute is already updated locally
     if (update.getId() != null) {
-      return studentService.upsert(id, new Student(
-        update.getId(), student.getName(), student.getGPAX(), student.getAmbition()
-      ));
+      return null;
     }
 
     studentService.update(student);
