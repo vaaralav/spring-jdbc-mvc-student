@@ -19,7 +19,7 @@
 <body>
 <header class="page-header">
     <div class="container">
-        <h2>Software Architecture, Design Pattern in Spring</h2>
+        <h2 class="page-title"><a href="/">Software Architecture, Design Pattern in Spring</a></h2>
         <h3>By <a href="https://github.com/vaaralav/">Ville Vaarala</a></h3>
     </div>
 </header>
@@ -55,5 +55,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<script src="/assets/student.js"></script>
 </body>
 </html>

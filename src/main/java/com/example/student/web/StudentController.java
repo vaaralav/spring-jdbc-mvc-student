@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.student.domain.Student;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
@@ -32,6 +33,8 @@ public class StudentController {
   @GetMapping("/students")
   public ModelAndView listStudents(Map<String, Object> model) {
     model.put("pageTitle", "Students List");
+    Collection<Student> students = studentService.getAll();
+    model.put("students", students);
     return new ModelAndView("students");
   }
 

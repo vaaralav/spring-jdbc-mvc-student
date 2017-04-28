@@ -6,6 +6,16 @@ header.page-header {
     color: #ddd;
 }
 
+header.page-header .page-title > a {
+    text-decoration: none;
+    color: #ddd;
+}
+
+header.page-header .page-title > a:hover {
+    top: -1px;
+    position: relative;
+}
+
 h1 {
     text-align: center;
 }
@@ -13,6 +23,10 @@ h1 {
 main > .content {
     margin-top: 20px;
     text-align: center;
+}
+
+table.table, table.table td, table.table th{
+    text-align: left;
 }
 
 main > .content a.btn {

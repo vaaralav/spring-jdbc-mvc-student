@@ -19,7 +19,7 @@
 <body>
 <header class="page-header">
     <div class="container">
-        <h2>Software Architecture, Design Pattern in Spring</h2>
+        <h2 class="page-title"><a href="/">Software Architecture, Design Pattern in Spring</a></h2>
         <h3>By <a href="https://github.com/vaaralav/">Ville Vaarala</a></h3>
     </div>
 </header>

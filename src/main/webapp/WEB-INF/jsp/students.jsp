@@ -19,19 +19,46 @@
 <body>
 <header class="page-header">
     <div class="container">
-        <h2>Software Architecture, Design Pattern in Spring</h2>
+        <h2 class="page-title"><a href="/">Software Architecture, Design Pattern in Spring</a></h2>
         <h3>By <a href="https://github.com/vaaralav/">Ville Vaarala</a></h3>
     </div>
 </header>
 <main id="root" class="container">
-    <h1>Ville Vaarala's JDBC Template Project</h1>
+    <h1>${pageTitle}</h1>
 
-    <div class="row content">
-        <div class="btn-group" role="group" aria-label="...">
-            <a class="btn btn-default btn-lg" href="/create-student">Add Student <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </a>
-            <a class="btn btn-default btn-lg" href="/students">View Students <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a>
-        </div>
+    <div class="content">
+        <table id="student-table" class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>GPAX</th>
+                    <th>Ambition</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${students}" var="student">
+                <tr>
+                    <td>${student.getId()}</td>
+                    <td>${student.getName()}</td>
+                    <td>${student.getGPAX()}</td>
+                    <td>${student.getAmbition()}</td>
+                    <td>
+                        <a href="/edit-student/${student.getId()}" class="btn btn-success">
+                            Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a data-id="${student.getId()}" href="javascript;" class="delete-student btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                </c:forEach>
+            </tbody>
+        </table>
     </div>
 </main>
 
@@ -41,5 +68,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<script src="/assets/student.js"></script>
 </body>
 </html>
